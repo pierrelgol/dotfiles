@@ -1,0 +1,83 @@
+[[language]]
+auto-format = true
+file-types = ["zig"]
+indent = { tab-width = 8, unit = "\t" }
+language-servers = ["zls"]
+name = "zig"
+roots = ["build.zig","build.zig.zon", "zls.build.json"]
+scope = "source.zig"
+
+[language-server.zls]
+command = "zls"
+
+[language-server.llm-lsp]
+command = "llm-lsp"
+args = ["server", "-p", "codeium"]
+
+[[language]]
+auto-format = true
+diagnostic-severity = "error"
+file-types = ["c","h"]
+indent = { tab-width = 8, unit = "\t" }
+language-servers = ["clangd", "llm-lsp"]
+name = "c"
+roots = ["Makefile","run.sh","build.zig"]
+scope = "source.c"
+
+[[language]]
+auto-format = true
+diagnostic-severity = "error"
+file-types = ["cpp","hpp"]
+indent = { tab-width = 8, unit = "\t" }
+language-servers = ["clangd", "llm-lsp"]
+name = "cpp"
+roots = ["Makefile","run.sh","build.zig"]
+scope = "source.cpp"
+
+[language-server.clangd]
+command = "clangd"
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rs|rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+shebangs = ["rust-script", "cargo"]
+auto-format = true
+language-servers = [ "rust-analyzer" , "llm-lsp"]
+indent = { tab-width = 8, unit = "\t" }
+persistent-diagnostic-sources = ["rustc", "clippy"]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+cachePriming.enable = false
+diagnostics.experimental.enable = true
+
+
+[[language]]
+name = "gas"
+scope = "source.gas"
+file-types = ["s"]
+injection-regex = "gas"
+indent = { tab-width = 8, unit = "\t" }
+formatter = { command = "asmfmt", args = [""]}
+language-servers = ["asm-lsp"]
+
+[[grammar]]
+name = "gas"
+source = { git = "https://github.com/sirius94/tree-sitter-gas", rev = "60f443646b20edee3b7bf18f3a4fb91dc214259a" }
+
+[language-server.asm-lsp]
+command = "asm-lsp"
+

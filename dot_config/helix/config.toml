@@ -1,0 +1,179 @@
+################################################################################
+#                                    HELIX                                     #
+################################################################################
+
+###################
+# THEME           #
+###################
+# theme = "fleet_dark"
+# theme = "github_dark"
+# theme = "rose_pine_dawn"
+theme = "rose_pine"
+# theme = "rose_pine_moon"
+# theme = "github_dark_high_contrast"
+
+###################
+# CONFIG          #
+###################
+
+[editor]
+auto-completion                    = true
+auto-format                        = true
+auto-info                          = true
+bufferline                         = "always"
+completion-replace                 = true
+completion-timeout                 = 5
+completion-trigger-len             = 1
+cursorcolumn                       = true
+cursorline                         = true
+default-line-ending                = "lf"
+idle-timeout                       = 5
+indent-heuristic                   = "hybrid"
+insert-final-newline               = true
+jump-label-alphabet                = "asdfghjklweruio"
+line-number                        = "relative"
+middle-click-paste                 = true
+mouse                              = true
+preview-completion-insert          = true
+rulers                             = [80]
+scroll-lines                       = 5
+scrolloff                          = 5
+text-width                         = 80
+true-color                         = true
+undercurl                          = true
+popup-border = "all"
+path-completion = true
+end-of-line-diagnostics = "hint"
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+after-delay.timeout = 3000
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+
+[editor.cursor-shape]
+insert                             = "bar"
+normal                             = "block"
+select                             = "underline"
+
+[editor.file-picker]
+hidden                             = true
+follow-symlinks                    = true
+deduplicate-links                  = true
+parents                            = true
+ignore                             = true
+git-ignore                         = true
+git-global                         = true
+git-exclude                        = true
+
+[editor.gutters]
+layout                             = ["line-numbers","diagnostics","diff"]
+
+[editor.gutters.line-numbers]
+min-width = 4
+
+
+[editor.indent-guides]
+character                          = "⸽"
+render                             = true
+skip-levels                        = 0
+
+[editor.lsp]
+auto-signature-help                = true
+display-inlay-hints                = true
+display-messages                   = true
+display-signature-help-docs        = true
+enable                             = true
+goto-reference-include-declaration = true
+snippets                           = true
+
+[editor.search]
+smart-case                         = false
+wrap-around                        = true
+
+[editor.smart-tab]
+enable                             = false
+
+[editor.soft-wrap]
+enable                             = false
+
+[editor.statusline]
+left                               = ["mode","separator","spacer","version-control","spacer","separator", "file-name","separator","file-modification-indicator"]
+center                             = ["separator","spacer","workspace-diagnostics","spinner","separator"]
+right                              = ["separator","primary-selection-length","register","separator","position","separator","total-line-numbers","separator","position-percentage","separator","file-type","file-encoding","separator","file-line-ending","spacer","separator"]
+separator                          = "⸽"
+mode.insert                        = "INSERT"
+mode.normal                        = "NORMAL"
+mode.select                        = "SELECT"
+
+
+###################
+# KEYBINDINGS     #
+###################
+
+[keys.normal]
+esc      = ["collapse_selection", "keep_primary_selection"]
+S-ret    = ["extend_to_word", "select_mode"]
+S-tab    = [":bp"]
+ret      = ["goto_word"]
+tab      = [":bn"]
+C-h      = ["move_prev_sub_word_start"]
+C-l      = ["move_next_sub_word_start"]
+C-k      = ["extend_to_line_bounds","delete_selection", "move_line_up","paste_before"]
+C-j      = ["extend_to_line_bounds","delete_selection", "move_line_down","paste_before"]
+C-b      = ["goto_first_nonwhitespace"]
+C-e      = ["goto_line_end"]
+C-p      = ["shrink_selection"]
+C-n      = ["expand_selection"]
+A-x      = ["extend_to_line_bounds"]
+S-v      = ["extend_to_line_bounds", "extend_to_line_bounds", "select_mode"]
+X        = ["extend_line_up", "extend_to_line_bounds"]
+"*"      = ["move_prev_word_start", "move_next_word_end", "search_selection"]
+C-g = [
+    ":write-all",
+    ":new",
+    ":insert-output lazygit",
+    ":buffer-close!",
+    ":redraw",
+    ":reload-all"
+]
+
+
+[keys.normal.space.t]
+a        = ":toggle-option auto-completion"
+s        = ":toggle-option auto-save"
+f        = ":toggle-option auto-format"
+h        = ":toggle-option lsp.display-inlay-hints"
+l        = ":toggle-option lsp.enable"
+
+[keys.normal.space.c]
+l        = ":o ~/.config/helix/languages.toml"
+o        = ":config-open"
+r        = [":w", ":config-reload",":reload-all"]
+
+[keys.insert]
+C-b      = ["insert_at_line_start"]
+C-e      = ["insert_at_line_end"]
+C-h      = ["move_char_left"]
+C-j      = ["move_line_down"]
+C-k      = ["move_line_up"]
+C-l      = ["move_char_right"]
+
+[keys.select]
+esc      = ["collapse_selection", "normal_mode"]
+c        = ["trim_selections"]
+";"      = ["flip_selections"]
+","      = ["extend_search_next"]
+n        = ["repeat_last_motion"]
+N        = ["extend_search_prev"]
+"C-r"      = ["reverse_selection_contents"]
+
+[keys.select."]"]
+"]"      = ["goto_prev_paragraph"]
+
+[keys.select."["]
+"["      = ["goto_next_paragraph"]
+
