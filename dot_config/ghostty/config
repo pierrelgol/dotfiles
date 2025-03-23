@@ -1,0 +1,22 @@
+font-family = CommitMono Nerd Font Mono
+font-size = 12
+font-style = Regular
+font-synthetic-style = no-bold,no-italic,no-bold-italic
+theme = rose-pine
+gtk-titlebar=false
+confirm-close-surface=false
+background-opacity = 1
+
+keybind = super+shift+r=reload_config
+keybind = super+shift+s=new_split:auto
+keybind = super+shift+q=close_surface
+keybind = super+shift+e=equalize_splits
+keybind = super+shift+h=resize_split:left,50
+keybind = super+shift+l=resize_split:right,50
+keybind = super+shift+k=resize_split:up,50
+keybind = super+shift+j=resize_split:down,50
+
+keybind = super+h=goto_split:left
+keybind = super+l=goto_split:right
+keybind = super+k=goto_split:up
+keybind = super+j=goto_split:down
