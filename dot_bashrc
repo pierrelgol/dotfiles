@@ -55,6 +55,7 @@ export EDITOR="hx"
 # PATH
 # ==============================================================================
 export PATH="$HOME/.local/bin:$HOME/local/bin:$HOME/local/repo:$HOME/.cargo/bin:$PATH"
+export HELIX_RUNTIME=$HOME/local/bin/runtime
 
 # ==============================================================================
 # GENERAL ALIASES
@@ -144,3 +145,4 @@ PS1='\u@\h:\w\$ '
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+exec fish
