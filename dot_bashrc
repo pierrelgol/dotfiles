@@ -83,9 +83,33 @@ alias zbo="zig build -Doptimize=ReleaseFast"
 alias zbor="zig build -Doptimize=ReleaseFast run"
 
 # ==============================================================================
+# FUNCTIONS
+# ==============================================================================
+yy() {
+  local tmp
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if [ -s "$tmp" ]; then
+    cd -- "$(cat "$tmp")"
+  fi
+  rm -f -- "$tmp"
+}
+
+current_branch() {
+  git symbolic-ref --short HEAD 2>/dev/null
+}
+
+current_repository() {
+  git remote get-url origin 2>/dev/null | sed 's|.*:||'
+}
+
+alias nn="yy"
+
+# ==============================================================================
 # GIT ALIASES
 # ==============================================================================
 alias g='git'
+alias gcl='git clone'
 alias gaa='git add .'
 alias gcmsg='git commit -m'
 alias gst='git status'
@@ -111,26 +135,6 @@ alias ggpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias ggpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias ggpnp='git pull origin $(git rev-parse --abbrev-ref HEAD) && git push origin $(git rev-parse --abbrev-ref HEAD)'
 
-# ==============================================================================
-# FUNCTIONS
-# ==============================================================================
-yy() {
-  local tmp
-  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if [ -s "$tmp" ]; then
-    cd -- "$(cat "$tmp")"
-  fi
-  rm -f -- "$tmp"
-}
-
-current_branch() {
-  git symbolic-ref --short HEAD 2>/dev/null
-}
-
-current_repository() {
-  git remote get-url origin 2>/dev/null | sed 's|.*:||'
-}
 
 # ==============================================================================
 # PROMPT
