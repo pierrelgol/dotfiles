@@ -141,8 +141,5 @@ alias ggpnp='git pull origin $(git rev-parse --abbrev-ref HEAD) && git push orig
 # PROMPT
 # ==============================================================================
 PS1='\u@\h:\w\$ '
-
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-exec fish
