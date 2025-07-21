@@ -55,7 +55,7 @@ export EDITOR="hx"
 # PATH
 # ==============================================================================
 export PATH="$HOME/.local/bin:$HOME/local/bin:$HOME/local/repo:$HOME/.cargo/bin:$PATH"
-export HELIX_RUNTIME=$HOME/local/bin/runtime
+export HELIX_RUNTIME=$HOME/local/bin/helix/runtime
 
 # ==============================================================================
 # GENERAL ALIASES
@@ -143,3 +143,7 @@ alias ggpnp='git pull origin $(git rev-parse --abbrev-ref HEAD) && git push orig
 PS1='\u@\h:\w\$ '
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH="/home/pollivie/local/bin:$PATH"
+export PATH="/home/pollivie/.local/bin:$PATH"
+
+[ -f "/home/pollivie/.config/envman/PATH.env" ] && source "/home/pollivie/.config/envman/PATH.env"

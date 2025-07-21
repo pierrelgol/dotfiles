@@ -54,3 +54,6 @@ alias zfgrep 'zfgrep --color=auto'
 alias zgrep 'zgrep --color=auto'
 alias zr 'zig run *.zig'
 alias zt 'zig test *.zig'
+
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
