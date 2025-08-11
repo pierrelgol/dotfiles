@@ -16,17 +16,17 @@ args = ["server", "-p", "codeium"]
 
 [[language]]
 auto-format = true
-diagnostic-severity = "error"
+diagnostic-severity = "info"
 file-types = ["c","h"]
 indent = { tab-width = 8, unit = "\t" }
-language-servers = ["clangd", "llm-lsp"]
+language-servers = ["clangd", ]
 name = "c"
 roots = ["Makefile","run.sh","build.zig"]
 scope = "source.c"
 
 [[language]]
 auto-format = true
-diagnostic-severity = "error"
+diagnostic-severity = "info"
 file-types = ["cpp","hpp"]
 indent = { tab-width = 8, unit = "\t" }
 language-servers = ["clangd", "llm-lsp"]
@@ -36,6 +36,8 @@ scope = "source.cpp"
 
 [language-server.clangd]
 command = "clangd"
+args = ["--enable-config", "--query-driver=/**/bin/xtensa-esp32-elf-*" ,"--background-index" ,"--header-insertion=iwyu" ,"-j=4" ]
+
 
 [[language]]
 name = "rust"
@@ -81,3 +83,93 @@ source = { git = "https://github.com/sirius94/tree-sitter-gas", rev = "60f443646
 [language-server.asm-lsp]
 command = "asm-lsp"
 
+
+
+# Ziggy
+[language-server.ziggy-lsp]
+command = "ziggy"
+args = ["lsp"]
+
+[language-server.ziggy-schema-lsp]
+command = "ziggy"
+args = ["lsp", "--schema"]
+
+[[language]]
+name = "ziggy"
+scope = "text.ziggy"
+roots = []
+injection-regex = "ziggy|zgy"
+file-types = ["ziggy", "zgy"]
+comment-token = "//"
+auto-format = true
+formatter = { command = "ziggy" , args = ["fmt", "--stdin"] }
+language-servers = [ "ziggy-lsp" ]
+
+[[grammar]]
+name = "ziggy"
+source = { path = "/home/pollivie/local/repo/ziggy/tree-sitter-ziggy" }
+
+[[language]]
+name = "ziggy_schema"
+scope = "text.ziggy_schema"
+roots = []
+injection-regex = "ziggy-schema|zgy-schema"
+file-types = ["ziggy-schema", "zgy-schema"]
+comment-token = "///"
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "ziggy" , args = ["fmt", "-", "--type", "schema"] }
+auto-format = true
+language-servers = [ "ziggy-schema-lsp" ]
+
+[[grammar]]
+name = "ziggy_schema"
+source = { path = "/home/pollivie/local/repo/ziggy/tree-sitter-ziggy-schema" }
+
+# SuperMD
+[[language]]
+name = "supermd"
+scope = "source.supermd"
+roots = []
+file-types = ["smd"]
+injection-regex = "supermd|smd"
+
+[[grammar]]
+name = "supermd"
+source = { path = "/home/pollivie/local/repo/supermd/tree-sitter/supermd" }
+
+[[language]]
+name = "supermd_inline"
+scope = "source.supermd.inline"
+injection-regex = "supermd_inline"
+file-types = []
+grammar = "supermd_inline"
+
+[[grammar]]
+name = "supermd_inline"
+source = { path = "/home/pollivie/local/repo/supermd/tree-sitter/supermd-inline" }
+
+
+# SuperHTML
+[language-server.superhtml-lsp]
+command = "superhtml"
+args = ["lsp"]
+
+[[language]]
+name = "html"
+scope = "source.html"
+roots = []
+file-types = ["html"]
+language-servers = [ "superhtml-lsp" ]
+
+[[language]]
+name = "superhtml"
+scope = "source.superhtml"
+roots = []
+file-types = ["shtml"]
+injection-regex = "superhtml|shtml"
+auto-format = true
+language-servers = [ "superhtml-lsp" ]
+
+[[grammar]]
+name = "superhtml"
+source = { path = "/home/pollivie/local/repo/superhtml/tree-sitter-superhtml" }

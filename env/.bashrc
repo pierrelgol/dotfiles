@@ -5,6 +5,7 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
@@ -145,5 +146,10 @@ PS1='\u@\h:\w\$ '
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export PATH="/home/pollivie/local/bin:$PATH"
 export PATH="/home/pollivie/.local/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 
 [ -f "/home/pollivie/.config/envman/PATH.env" ] && source "/home/pollivie/.config/envman/PATH.env"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+

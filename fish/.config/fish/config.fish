@@ -2,6 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+alias esp '. /home/pollivie/esp/esp-idf/export.fish'
 alias dbg './dbg.sh'
 alias egrep 'grep -E --color=auto'
 alias fgrep 'grep -F --color=auto'

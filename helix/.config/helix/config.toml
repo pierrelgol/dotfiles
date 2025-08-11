@@ -40,10 +40,9 @@ scroll-lines                       = 5
 scrolloff                          = 5
 text-width                         = 80
 true-color                         = true
-undercurl                          = true
 popup-border = "all"
 path-completion = true
-end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "disable"
 
 [editor.auto-save]
 focus-lost = true
@@ -51,7 +50,8 @@ after-delay.enable = true
 after-delay.timeout = 3000
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
+cursor-line = "error"
+other-lines = "disable"
 
 
 [editor.cursor-shape]
@@ -75,20 +75,22 @@ layout                             = ["line-numbers","diagnostics","diff"]
 [editor.gutters.line-numbers]
 min-width = 4
 
-
 [editor.indent-guides]
 character                          = "⸽"
 render                             = true
 skip-levels                        = 0
 
 [editor.lsp]
+enable                             = true
+display-messages                   = true
+display-progress-messages          = true
 auto-signature-help                = true
 display-inlay-hints                = true
-display-messages                   = true
+display-color-swatches             = true
 display-signature-help-docs        = true
-enable                             = true
-goto-reference-include-declaration = true
 snippets                           = true
+goto-reference-include-declaration = true
+
 
 [editor.search]
 smart-case                         = false

@@ -1,4 +1,19 @@
 CompileFlags:
   Add: [-Wall, -Werror, -Wextra]
   Remove: -mabi
+Diagnostics:
+  Suppress: ['*']
+Completion:
+  AllScopes: Yes
+  ArgumentLists: FullPlaceholders
+  HeaderInsertion: IWYU
+  CodePatterns: All
+InlayHints:
+  BlockEnd: true
+  Designators: true
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  DefaultArguments: true
+  TypeNameLimit: 24
 
